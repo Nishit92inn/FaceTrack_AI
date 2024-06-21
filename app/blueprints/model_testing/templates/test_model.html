@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Test Model - FaceTrack AI{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card bg-dark text-light">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">Test Model</h1>
+                    <div class="form-group mb-4">
+                        <label for="modelSelect" class="form-label">Select Model:</label>
+                        <select class="form-select bg-dark text-light" id="modelSelect">
+                            <option value="">Select a model...</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div id="modelDetails" style="display: none;">
+                        <h2 class="mb-3">Upload Image for Testing</h2>
+                        <form id="uploadImageForm" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="imageUpload" class="form-label">Upload Image:</label>
+                                <input type="file" class="form-control bg-dark text-light" id="imageUpload" name="image" accept="image/*" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-upload me-2"></i>Upload and Test
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="loadingIndicator" class="text-center mt-4" style="display: none;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Processing image...</p>
+                    </div>
+                    <div id="predictionResult" class="mt-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('model_testing.static', filename='js/test_model.js') }}"></script>
+{% endblock %}

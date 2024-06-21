@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Train Model - FaceTrack AI{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card bg-dark text-light">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">Train Model</h1>
+                    <form id="training-form">
+                        <div class="mb-3">
+                            <label for="num_epochs" class="form-label">Number of Epochs:</label>
+                            <input type="number" id="num_epochs" name="num_epochs" class="form-control bg-dark text-light" value="10" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="batch_size" class="form-label">Batch Size:</label>
+                            <input type="number" id="batch_size" name="batch_size" class="form-control bg-dark text-light" value="32" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-play-circle me-2"></i>Start Training
+                            </button>
+                        </div>
+                    </form>
+                    <div class="mt-4">
+                        <h5>Training Progress</h5>
+                        <div class="progress" style="height: 25px;">
+                            <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+                        <div id="training-status" class="mt-3 bg-light text-dark p-3 rounded"></div>
+                    </div>
+                    <div class="mt-4">
+                        <h5>Training Log</h5>
+                        <div id="training-log" class="bg-light text-dark p-3 rounded" style="max-height: 200px; overflow-y: auto;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('model_training.static', filename='js/train_model.js') }}"></script>
+{% endblock %}

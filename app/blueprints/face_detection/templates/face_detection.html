@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Face Detection and Feature Extraction - FaceTrack AI{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Face Detection and Feature Extraction</h1>
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <div class="card bg-dark text-light">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Choose Dataset</h3>
+                    <div class="d-grid gap-3">
+                        <button id="useOurDatasetBtn" class="btn btn-primary btn-lg">
+                            <i class="fas fa-database me-2"></i>Use Our Dataset
+                        </button>
+                        <button id="useOpenSourceDatasetBtn" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-globe me-2"></i>Use OpenSource Dataset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ourDatasetOptions" class="row justify-content-center mt-4" style="display: none;">
+        <div class="col-md-8">
+            <div class="card bg-dark text-light">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Our Dataset Options</h3>
+                    <div class="d-grid gap-3">
+                        <button id="extractFacesBtn" class="btn btn-info">
+                            <i class="fas fa-user-circle me-2"></i>Extract Faces
+                        </button>
+                        <button id="extractFeaturesBtn" class="btn btn-success">
+                            <i class="fas fa-cogs me-2"></i>Extract Features
+                        </button>
+                        <button id="createLabelMapBtn" class="btn btn-warning">
+                            <i class="fas fa-tags me-2"></i>Create Label Map
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="faceDetectionSection" class="mt-5" style="display: none;">
+        <h3 class="text-center mb-4">Select Celebrity Folder</h3>
+        <ul id="celebrityFoldersList" class="list-group mb-4">
+            <!-- Options will be populated by JavaScript -->
+        </ul>
+        <div class="text-center">
+            <button id="startFaceDetectionAllBtn" class="btn btn-danger btn-lg">
+                <i class="fas fa-play-circle me-2"></i>Extract Faces from All Folders
+            </button>
+        </div>
+        <div class="progress mt-4" id="overall-progress-container" style="height: 25px;">
+            <div id="overall-progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+        <div id="overall-message" class="text-center mt-2"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('face_detection.static', filename='js/face_detection.js') }}"></script>
+<script src="{{ url_for('face_detection.static', filename='js/label_map.js') }}"></script>
+{% endblock %}

@@ -1,37 +1,33 @@
 {% extends "base.html" %}
-
 {% block title %}Home - TrackMaster AI Face Detection{% endblock %}
-
 {% block content %}
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <div class="bg-gray-800 rounded-lg shadow-lg p-6">
-        <h2 class="text-2xl font-semibold mb-4"><i class="fas fa-search mr-2"></i>Image Scraper</h2>
+<h1 class="text-title">Welcome to TrackMaster AI</h1>
+<div class="grid">
+    <div class="card">
+        <h2 class="card-title"><i class="fas fa-search mr-2"></i>Image Scraper</h2>
         <p class="mb-4">Scrape images of celebrities for face detection.</p>
-        <a href="{{ url_for('image_scraper.image_scraper') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+        <a href="{{ url_for('image_scraper.image_scraper') }}" class="btn btn-primary">
             <i class="fas fa-arrow-right mr-2"></i> Go to Image Scraper
         </a>
     </div>
-
-    <div class="bg-gray-800 rounded-lg shadow-lg p-6">
-        <h2 class="text-2xl font-semibold mb-4"><i class="fas fa-user-circle mr-2"></i>Face Detection</h2>
+    <div class="card">
+        <h2 class="card-title"><i class="fas fa-user-circle mr-2"></i>Face Detection</h2>
         <p class="mb-4">Detect and extract faces from the scraped images.</p>
-        <a href="{{ url_for('face_detection.face_detection') }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+        <a href="{{ url_for('face_detection.face_detection') }}" class="btn btn-success">
             <i class="fas fa-arrow-right mr-2"></i> Go to Face Detection
         </a>
     </div>
-
-    <div class="bg-gray-800 rounded-lg shadow-lg p-6">
-        <h2 class="text-2xl font-semibold mb-4"><i class="fas fa-brain mr-2"></i>Train the Model</h2>
+    <div class="card">
+        <h2 class="card-title"><i class="fas fa-brain mr-2"></i>Train the Model</h2>
         <p class="mb-4">Train models for face recognition and evaluate their performance.</p>
-        <a href="{{ url_for('model_training.train_model_page') }}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+        <a href="{{ url_for('model_training.train_model_page') }}" class="btn btn-warning">
             <i class="fas fa-arrow-right mr-2"></i> Go to Model Training
         </a>
     </div>
-
-    <div class="bg-gray-800 rounded-lg shadow-lg p-6">
-        <h2 class="text-2xl font-semibold mb-4"><i class="fas fa-vial mr-2"></i>Test the Model</h2>
+    <div class="card">
+        <h2 class="card-title"><i class="fas fa-vial mr-2"></i>Test the Model</h2>
         <p class="mb-4">Upload an image to test the trained model.</p>
-        <a href="{{ url_for('model_testing.test_model_page') }}" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+        <a href="{{ url_for('model_testing.test_model_page') }}" class="btn btn-danger">
             <i class="fas fa-arrow-right mr-2"></i> Test the Model
         </a>
     </div>

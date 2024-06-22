@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('scraping-form');
     const progressBar = document.getElementById('progress-bar');
+    const progressContainer = document.getElementById('progress-container');
     const homeButton = document.getElementById('home-button');
     const rebuildButton = document.getElementById('rebuild-button');
 
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function startScraping() {
         const formData = new FormData(form);
+        progressContainer.style.display = 'block'; // Show the progress bar
         fetch('/image_scraper/start_scraping', {
             method: 'POST',
             body: formData

@@ -5,8 +5,10 @@ from bs4 import BeautifulSoup
 import random
 import base64
 
-RAW_DATASET_DIR = 'Raw_DataSet'
-METADATA_DIR = 'Metadata'
+# Define the base directory for data storage
+BASE_DATA_DIR = './data'
+RAW_DATASET_DIR = os.path.join(BASE_DATA_DIR, 'raw_DataSet')
+METADATA_DIR = os.path.join(BASE_DATA_DIR, 'metadata')
 METADATA_FILE = os.path.join(METADATA_DIR, 'image_mappings.json')
 
 # Global variable for progress tracking
@@ -32,6 +34,7 @@ def load_metadata():
         return {}
 
 def save_metadata(metadata):
+    create_folder_if_not_exists(METADATA_DIR)
     with open(METADATA_FILE, 'w') as f:
         json.dump(metadata, f, indent=4)
 
@@ -77,7 +80,6 @@ def scrape_images(celebrity_name, num_images):
         page += 1
 
     create_folder_if_not_exists(RAW_DATASET_DIR)
-    create_folder_if_not_exists(METADATA_DIR)
     celebrity_folder = os.path.join(RAW_DATASET_DIR, celebrity_name.replace(" ", "_").lower())
     create_folder_if_not_exists(celebrity_folder)
 
@@ -115,3 +117,4 @@ def rebuild_metadata():
             metadata[celeb_folder] = image_files
     save_metadata(metadata)
     print("Metadata rebuilt successfully.")
+
